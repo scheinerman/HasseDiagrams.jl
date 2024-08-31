@@ -4,12 +4,14 @@ using Posets
 using Graphs
 using SimpleDrawing
 using Plots
+using Random
 
 import Base: show
 import SimpleDrawing: draw, draw!
 
 export HasseDiagram,
     basic_layout,
+    layout_2d,
     draw,
     get_font_size,
     set_font_size,
@@ -50,5 +52,6 @@ show(io::IO, h::HasseDiagram) = print(io, "Hasse diagram of a $(h.p)")
 include("get-set.jl")
 include("draw.jl")
 include("basic_layout.jl")
+include("layout_2d.jl")
 
 end # module HasseDiagrams
