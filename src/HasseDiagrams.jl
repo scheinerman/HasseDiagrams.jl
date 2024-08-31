@@ -9,14 +9,16 @@ import Base: show
 import SimpleDrawing: draw, draw!
 
 export HasseDiagram,
-    basic_embedding,
+    basic_layout,
     draw,
     get_font_size,
     set_font_size,
     get_radius,
     set_radius,
     set_fill_color,
-    get_fill_color
+    get_fill_color,
+    set_xy,
+    get_xy
 
 const FONT_SIZE = 10
 const RADIUS = 12
@@ -33,7 +35,7 @@ mutable struct HasseDiagram
 
     function HasseDiagram(p::Poset)
         n = nv(p)
-        xy = basic_embedding(p)
+        xy = basic_layout(p)
         labels = Dict{Int,Any}()
         for v in 1:n
             labels[v] = v
@@ -45,8 +47,8 @@ end
 
 show(io::IO, h::HasseDiagram) = print(io, "Hasse diagram of a $(h.p)")
 
-include("properties.jl")
+include("get-set.jl")
 include("draw.jl")
-include("basic_embedding.jl")
+include("basic_layout.jl")
 
 end # module HasseDiagrams

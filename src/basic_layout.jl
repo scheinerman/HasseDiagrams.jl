@@ -1,4 +1,4 @@
-function basic_embedding(p::Poset)
+function basic_layout(p::Poset)
     n = nv(p)
     x = Dict{Int,Float64}()   # x-coordinates
     y = Dict{Int,Float64}()   # y-coordinates

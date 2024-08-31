@@ -36,3 +36,36 @@ set_fill_color(h::HasseDiagram, fill=FILL_COLOR) = h.fill_color = fill
 Return the vertex color for `h`.
 """
 get_fill_color(h::HasseDiagram) = h.fill_color
+
+"""
+    set_xy(h::HasseDiagram, method::Function=basic_embedding)
+
+Give the Hasse diagram `h` an embedding using `method`.
+"""
+function set_xy(h::HasseDiagram, method::Function=basic_layout)
+    h.xy = method(h.p)
+    return nothing
+end
+
+"""
+    set_xy(h::HasseDiagram, xy::Dict{Int,Vector})
+
+Give the Hasse diagram an embedding from a dictionary. If a vertex 
+does not appear in `xy`, then its position is unchanged. 
+"""
+function set_xy(h::HasseDiagram, xy::Dict{Int,Vector})
+    n = nv(h.p)
+    for v in 1:n
+        if haskey(xy, v)
+            h.xy[v] = xy[v]
+        end
+    end
+    return nothing
+end
+
+"""
+    get_xy(h::HasseDiagram)
+
+Return a copy of the embedding of `h`. 
+"""
+get_xy(h::HasseDiagram) = deepcopy(h.xy)
