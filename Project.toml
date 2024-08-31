@@ -12,8 +12,8 @@ Random = "9a3f8284-a2c9-5f02-9a11-845980a1fd5c"
 
 
 [compat]
-Graphs = "1"
-SimpleDrawing = "0.2"
 Posets = "0.3"
+SimpleDrawing = "0.2"
+Graphs = "1"
 Plots = "1"
-Julia = "1"
+julia = "1"
