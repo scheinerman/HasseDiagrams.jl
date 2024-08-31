@@ -1,3 +1,8 @@
+"""
+    draw!(h::HasseDiagram)
+
+Draw the Hasse diagram without first erasing the canvas. 
+"""
 function draw!(h::HasseDiagram)
     p = h.p
     g = cover_digraph(p)
@@ -18,6 +23,11 @@ function draw!(h::HasseDiagram)
     return finish()
 end
 
+"""
+    draw(h::HasseDiagram)
+
+Draw the Hasse diagram on a blank canvas.
+"""
 function draw(h::HasseDiagram)
     newdraw()
     return draw!(h)
