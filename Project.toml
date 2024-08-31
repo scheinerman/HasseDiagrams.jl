@@ -6,3 +6,9 @@ version = "0.0.0"
 [deps]
 Posets = "9a158a65-591e-4f68-ac4f-9ffef2fc51f2"
 SimpleDrawing = "d78a06e8-ae74-583c-9a07-0d6572347000"
+Graphs = "86223c79-3864-5bf0-83f7-82e725a168b6"
+
+[compat]
+Graphs = "1"
+SimpleDrawing = "0.2"
+Posets = "0.3"

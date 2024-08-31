@@ -1,9 +1,13 @@
 module HasseDiagrams
 
 using Posets
+using Graphs
 using SimpleDrawing
 
-export HasseDiagram
+import Base: show
+import SimpleDrawing: draw
+
+export HasseDiagram, basic_embedding, draw
 
 struct HasseDiagram
     p::Poset
@@ -16,7 +20,7 @@ struct HasseDiagram
 
     function HasseDiagram(p::Poset)
         n = nv(p)
-        xy = Dict{Int,Vector{Float64}}()
+        xy = basic_embedding(p)
         radius = 12
         fill_color = :white
 
@@ -29,5 +33,12 @@ struct HasseDiagram
         return new(p, xy, radius, fill_color, labels, label_size)
     end
 end
+
+
+show(io::IO, h::HasseDiagram) = print(io, "Hasse diagram of a $(h.p)")
+
+
+include("draw.jl")
+include("basic_embedding.jl")
 
 end # module HasseDiagrams
