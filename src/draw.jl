@@ -16,7 +16,7 @@ function draw!(h::HasseDiagram)
     for v in 1:nv(p)
         draw_point(h.xy[v]...; marker=h.radius, linecolor=:black, color=h.fill_color)
         if h.font_size > 0
-            annotate!(h.xy[v]..., v, h.font_size)
+            annotate!(h.xy[v]..., h.labels[v], h.font_size)
         end
     end
 

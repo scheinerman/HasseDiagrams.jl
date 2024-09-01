@@ -4,6 +4,7 @@ using Posets
 using Graphs
 using SimpleDrawing
 using Plots
+using LayeredLayouts
 using Random
 
 import Base: show
@@ -11,7 +12,8 @@ import SimpleDrawing: draw, draw!
 
 export HasseDiagram,
     basic_layout,
-    layout_2d,
+    dim2_layout,
+    layered_layout,
     draw,
     get_font_size,
     set_font_size,
@@ -19,6 +21,8 @@ export HasseDiagram,
     set_radius,
     set_fill_color,
     get_fill_color,
+    set_labels,
+    get_labels,
     set_xy,
     get_xy
 
@@ -52,6 +56,7 @@ show(io::IO, h::HasseDiagram) = print(io, "Hasse diagram of a $(h.p)")
 include("get-set.jl")
 include("draw.jl")
 include("basic_layout.jl")
-include("layout_2d.jl")
+include("dim2_layout.jl")
+include("layered_layout.jl")
 
 end # module HasseDiagrams

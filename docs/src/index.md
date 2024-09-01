@@ -24,13 +24,63 @@ When a Hasse diagram is created, it is given a default layout. Hasse diagrams ca
 ## Layout Methods
 
 * `basic_layout` places vertices vertically based on their rank and, within each rank, the horizontal placement is evenly spaced.
-* `layout_2d` is a decent layout function but only applicable to posets whose dimension is at most two. 
+* `dim2_layout` is a decent layout function but only applicable to posets whose dimension is at most two. Reasonbly quick.
+* `layered_layout` is a Sugiyaqma style layout from the [LayeredLayouts](https://github.com/oxinabox/LayeredLayouts.jl) module. Can be slow. 
+
+
+## Sample Results
+Results for a randomly generated two-dimensional poset:
+
+![](basic.png)
+
+![](dim2.png)
+
+![](layered.png)
+
 
 
 ## Properties
 
 #### Font size
 
-* Use `set_font_size(h, sz)` to set labels to be `sz` points. Use `0` to hide labels. 
+* Use `set_font_size(h, sz)` to set labels to be `sz` points. Use `0` to hide labels. Default is `FONT_SIZE = 10`.
 * Use `get_font_size(h)` to determine the current font size for `h`. 
 
+#### Node radius
+
+* Use `set_radius(h, r)` to set the size of the circles that represent the elements of the poset. Default is `RADIUS = 12`.
+* Use `get_radius(h)` to determine the current radius.
+
+#### Fill color
+
+* Use `set_fill_color(h, c)` to set the fill color for the circles to `c`. Default is `FILL_COLOR = :white`. All circles are filled with the same color. 
+* Use `get_fill_color(h)` to determine the current color. 
+
+
+## Example
+
+Here is an example for drawing (small) subset lattices with sensible labels. Here is the function
+to produce the picture:
+
+```julia
+using Posets, HasseDiagrams, SimpleDrawing, ShowSet
+
+function draw_bool(k)
+    p = subset_lattice(k)
+    h = HasseDiagram(p)
+    labs = Dict{Int,String}()
+    for v in 1:nv(p)
+        labs[v] = string(subset_decode(v))
+    end
+    set_labels(h, labs)
+    set_font_size(h, 8)
+    set_radius(h, 30)
+    set_fill_color(h, :lightblue)
+    set_xy(h, layered_layout)
+    draw(h)
+    expand_canvas()  # from SimpleDrawing
+end
+```
+Here is the result of `draw_bool(4)`:
+
+![](bool4.png)

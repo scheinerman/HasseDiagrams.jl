@@ -1,5 +1,4 @@
-
-function layout_2d(p::Poset, list1::Vector, list2::Vector)
+function dim2_layout(p::Poset, list1::Vector, list2::Vector)
     n = nv(p)
     xy = Dict{Int,Vector{Float64}}()
 
@@ -16,16 +15,16 @@ function layout_2d(p::Poset, list1::Vector, list2::Vector)
 end
 
 """
-    layout_2d(p::Poset)
+    dim2_layout(p::Poset)
 
 Create a layout for a two-dimensional poset using its realizer.
 """
-function layout_2d(p::Poset)
+function dim2_layout(p::Poset)
     try
         R = realizer(p, 2)
         list1 = Posets._chain2list(R[1])
         list2 = Posets._chain2list(R[2])
-        return layout_2d(p, list1, list2)
+        return dim2_layout(p, list1, list2)
     catch
         throw(ArgumentError("This poset's dimension is greater than two."))
     end

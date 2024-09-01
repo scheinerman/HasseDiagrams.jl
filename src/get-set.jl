@@ -69,3 +69,22 @@ end
 Return a copy of the embedding of `h`. 
 """
 get_xy(h::HasseDiagram) = deepcopy(h.xy)
+
+function set_labels(h::HasseDiagram, labs::Dict{Int,T}) where {T}
+    n = nv(h.p)
+    for v in 1:n
+        if haskey(labs, v)
+            h.labels[v] = labs[v]
+        end
+    end
+end
+
+function set_labels(h::HasseDiagram)
+    labs = Dict{Int,Int}()
+    for v in 1:nv(h.p)
+        labs[v] = v
+    end
+    return set_labels(h, labs)
+end
+
+get_labels(h::HasseDiagram) = deepcopy(h.labels)
