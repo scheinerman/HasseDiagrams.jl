@@ -26,6 +26,12 @@ function dim2_layout(p::Poset)
         list2 = Posets._chain2list(R[2])
         return dim2_layout(p, list1, list2)
     catch
-        throw(ArgumentError("This poset's dimension is greater than two."))
+        @warn "Poset is not two dimensional. Using pseudorealizer."
+        L1 = linear_extension(p)
+        L2 = linear_extension(p')'
+
+        x = Posets._chain2list(L1)
+        y = Posets._chain2list(L2)
+        return dim2_layout(p,x,y)
     end
 end
