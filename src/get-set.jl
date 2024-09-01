@@ -53,7 +53,7 @@ end
 Give the Hasse diagram an embedding from a dictionary. If a vertex 
 does not appear in `xy`, then its position is unchanged. 
 """
-function set_xy(h::HasseDiagram, xy::Dict{Int,Vector})
+function set_xy(h::HasseDiagram, xy::Dict{Int,Vector{T}}) where {T}
     n = nv(h.p)
     for v in 1:n
         if haskey(xy, v)
