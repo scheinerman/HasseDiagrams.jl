@@ -16,15 +16,18 @@ export HasseDiagram,
     layered_layout,
     draw,
     get_font_size,
-    set_font_size,
+    set_font_size!,
     get_radius,
-    set_radius,
-    set_fill_color,
+    set_radius!,
+    set_fill_color!,
     get_fill_color,
-    set_labels,
+    set_labels!,
     get_labels,
-    set_xy,
-    get_xy
+    set_xy!,
+    get_xy,
+    scalex!,
+    scaley!,
+    scale!
 
 const FONT_SIZE = 10
 const RADIUS = 12
@@ -58,5 +61,6 @@ include("draw.jl")
 include("basic_layout.jl")
 include("dim2_layout.jl")
 include("layered_layout.jl")
+include("scaling.jl")
 
 end # module HasseDiagrams
