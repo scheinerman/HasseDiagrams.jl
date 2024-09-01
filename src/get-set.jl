@@ -38,7 +38,7 @@ Return the vertex color for `h`.
 get_fill_color(h::HasseDiagram) = h.fill_color
 
 """
-    set_xy(h::HasseDiagram, method::Function=basic_embedding)
+    set_xy(h::HasseDiagram, method::Function=basic_layout)
 
 Give the Hasse diagram `h` an embedding using `method`.
 """

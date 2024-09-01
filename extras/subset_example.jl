@@ -13,5 +13,5 @@ function draw_bool(k)
     set_fill_color(h, :lightblue)
     set_xy(h, layered_layout)
     draw(h)
-    expand_canvas()  # from SimpleDrawing
+    return expand_canvas()  # from SimpleDrawing
 end

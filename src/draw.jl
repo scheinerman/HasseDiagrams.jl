@@ -32,3 +32,15 @@ function draw(h::HasseDiagram)
     newdraw()
     return draw!(h)
 end
+
+_direct_draw_warning = "Drawing a poset with defaults. Better to use draw(HasseDiagram(p))"
+
+function draw!(p::Poset)
+    @warn _direct_draw_warning
+    return draw!(HasseDiagram(p))
+end
+
+function draw(p::Poset)
+    newdraw()
+    return draw!(p)
+end
