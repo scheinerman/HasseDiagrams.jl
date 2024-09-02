@@ -5,7 +5,6 @@ using Graphs
 using SimpleDrawing
 using Plots
 using LayeredLayouts
-using Random
 
 import Base: show
 import SimpleDrawing: draw, draw!

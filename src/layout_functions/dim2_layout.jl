@@ -18,6 +18,7 @@ end
     dim2_layout(p::Poset)
 
 Create a layout for a two-dimensional poset using its realizer.
+If `dimension(p) > 2`, use a pseudorealizer. 
 """
 function dim2_layout(p::Poset)
     try
@@ -27,8 +28,8 @@ function dim2_layout(p::Poset)
         return dim2_layout(p, list1, list2)
     catch
         @warn "Poset is not two dimensional. Using pseudorealizer."
-        L1 = linear_extension(p)
-        L2 = linear_extension(p')'
+        L1 = random_linear_extension(p)
+        L2 = random_linear_extension(p')'
 
         x = chain2list(L1)
         y = chain2list(L2)
