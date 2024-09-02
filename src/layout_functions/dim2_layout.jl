@@ -22,16 +22,16 @@ Create a layout for a two-dimensional poset using its realizer.
 function dim2_layout(p::Poset)
     try
         R = realizer(p, 2)
-        list1 = Posets._chain2list(R[1])
-        list2 = Posets._chain2list(R[2])
+        list1 = chain2list(R[1])
+        list2 = chain2list(R[2])
         return dim2_layout(p, list1, list2)
     catch
         @warn "Poset is not two dimensional. Using pseudorealizer."
         L1 = linear_extension(p)
         L2 = linear_extension(p')'
 
-        x = Posets._chain2list(L1)
-        y = Posets._chain2list(L2)
-        return dim2_layout(p,x,y)
+        x = chain2list(L1)
+        y = chain2list(L2)
+        return dim2_layout(p, x, y)
     end
 end

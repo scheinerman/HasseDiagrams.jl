@@ -58,9 +58,10 @@ show(io::IO, h::HasseDiagram) = print(io, "Hasse diagram of a $(h.p)")
 
 include("get-set.jl")
 include("draw.jl")
-include("basic_layout.jl")
-include("dim2_layout.jl")
-include("layered_layout.jl")
 include("scaling.jl")
+
+include("layout_functions/basic_layout.jl")
+include("layout_functions/dim2_layout.jl")
+include("layout_functions/layered_layout.jl")
 
 end # module HasseDiagrams
