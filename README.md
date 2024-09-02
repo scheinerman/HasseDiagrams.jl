@@ -1,6 +1,6 @@
 # HasseDiagrams
 
-Drawings of partially ordered sets. 
+Drawings of [Posets](https://github.com/scheinerman/Posets.jl) (partially ordered sets).
 
 ## Basic Usage
 
@@ -30,7 +30,7 @@ to do so, use `scalex!` or `scaley!`, respecitvely.
 ## Layout Methods
 
 * `basic_layout` places vertices vertically based on their rank and, within each rank, the horizontal placement is evenly spaced.
-* `dim2_layout` is a decent layout function that is applicable to posets whose dimension is at most two. Reasonbly quick. In the poset has dimension greater than two, a reasonable alternative is presented. 
+* `dim2_layout` is a decent layout function that is applicable to posets whose dimension is at most two. Reasonbly quick. If the poset has dimension greater than two, a reasonable alternative is presented. 
 * `layered_layout` is a Sugiyaqma style layout from the [LayeredLayouts](https://github.com/oxinabox/LayeredLayouts.jl) module. Can be slow. 
 
 
