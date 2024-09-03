@@ -4,7 +4,10 @@ Drawings of [Posets](https://github.com/scheinerman/Posets.jl) (partially ordere
 
 ## Basic Usage
 
+To create a Hasse diagram for a `Poset` and draw it on the screen, do this:
 ```
+julia> using Posets, HasseDiagrams
+
 julia> p = subset_lattice(3)
 {8, 19} Int64 poset
 
@@ -13,6 +16,7 @@ Hasse diagram of a {8, 19} Int64 poset
 
 julia> draw(h)
 ```
+Note that `h` contains a copy of `p`, so subsequent changes to `p` are not reflected in `h`.
 
 ## Creating a Layout
 

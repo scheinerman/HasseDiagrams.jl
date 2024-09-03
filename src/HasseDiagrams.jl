@@ -49,7 +49,7 @@ mutable struct HasseDiagram
             labels[v] = v
         end
 
-        return new(p, xy, RADIUS, FILL_COLOR, labels, FONT_SIZE)
+        return new(deepcopy(p), xy, RADIUS, FILL_COLOR, labels, FONT_SIZE)
     end
 end
 
