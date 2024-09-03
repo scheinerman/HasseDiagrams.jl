@@ -21,6 +21,12 @@ Create a layout for a two-dimensional poset using its realizer.
 If `dimension(p) > 2`, use a pseudorealizer. 
 """
 function dim2_layout(p::Poset)
+    xy = Dict{Int,Vector{Float64}}()
+
+    if nv(p) == 0
+        return xy
+    end
+
     try
         R = realizer(p, 2)
         list1 = chain2list(R[1])

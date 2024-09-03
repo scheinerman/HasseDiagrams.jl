@@ -9,18 +9,15 @@ function draw_three(p::Poset)
     title!("set_xy!(h, basic_layout) [default]")
     savefig("basic.png")
 
-
     set_xy!(h, dim2_layout)
     draw(h)
     expand_canvas()
     title!("set_xy!(h, dim2_layout)")
     savefig("dim2.png")
 
-
     set_xy!(h, layered_layout)
     draw(h)
     expand_canvas()
     title!("set_xy!(h, layered_layout)")
-    savefig("layered.png")
-
+    return savefig("layered.png")
 end

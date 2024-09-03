@@ -1,5 +1,11 @@
 function basic_layout(p::Poset)
     n = nv(p)
+    xy = Dict{Int,Vector{Float64}}()
+
+    if n == 0
+        return xy
+    end
+
     x = Dict{Int,Float64}()   # x-coordinates
     y = Dict{Int,Float64}()   # y-coordinates
     rk = ranking(p)
@@ -21,7 +27,6 @@ function basic_layout(p::Poset)
         end
     end
 
-    xy = Dict{Int,Vector{Float64}}()
     for v in 1:n
         xy[v] = [x[v]; y[v]]
     end
