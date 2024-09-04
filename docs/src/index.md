@@ -1,6 +1,7 @@
 # HasseDiagrams
 
-Drawings of [Posets](https://github.com/scheinerman/Posets.jl) (partially ordered sets).
+[Hasse diagrams](https://en.wikipedia.org/wiki/Hasse_diagram) are 
+drawings of [Posets](https://github.com/scheinerman/Posets.jl) (partially ordered sets).
 
 ## Basic Usage
 
@@ -16,7 +17,7 @@ Hasse diagram of a {8, 19} Int64 poset
 
 julia> draw(h)
 ```
-Note that `h` contains a copy of `p`, so subsequent changes to `p` are not reflected in `h`.
+> Note that `h` contains a copy of `p`, so subsequent changes to `p` are not reflected in `h`.
 
 ## Creating a Layout
 
@@ -25,7 +26,7 @@ When a Hasse diagram is created, it is given a default layout. Hasse diagrams ca
 * `set_xy!(h, method)` uses the function `method` to compute the layout. The function acts on the posets held inside `h`. The list of available layout methods is in the next section. 
 * `set_xy!(h, xy)` uses the dictionary `xy` to site the vertices. Vertex `v` is placed at `xy[v]`. If `v` is not a key of `xy`, then its location is unchanged.
 
-### Scaling
+#### Scaling
 
 The function `scale!(p,μ)` multiplies all coordinates in the embedding by `μ`. 
 It is likely more useful just to multiply the `x`- or `y`-coordinates; 
