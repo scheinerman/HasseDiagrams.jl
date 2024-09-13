@@ -9,12 +9,11 @@ function layered_layout_2(p::Poset)
     xy = layered_layout(p)
     rk = dual_ranking(p)
 
-    for v = 1:nv(p)
+    for v in 1:nv(p)
         x = xy[v][1]
         y = rk[v]
-        xy[v] = [x,y]
+        xy[v] = [x, y]
     end
 
     return xy
-
 end
