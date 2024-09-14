@@ -40,7 +40,7 @@ to do so, use `scalex!` or `scaley!`, respecitvely.
 * `force_layout` is an experimental layout method in which edges of the cover graph act like springs, all vertices repel each other, and levels are determined by `dual_ranking`. 
 
 
-## Sample Results
+## Layout Examples
 Results for a randomly generated two-dimensional poset:
 
 ![](basic.png)
