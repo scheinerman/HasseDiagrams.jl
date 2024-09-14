@@ -37,6 +37,7 @@ to do so, use `scalex!` or `scaley!`, respecitvely.
 * `basic_layout` places vertices vertically based on their rank and, within each rank, the horizontal placement is evenly spaced.
 * `dim2_layout` is a decent layout function that is applicable to posets whose dimension is at most two. Reasonbly quick. If the poset has dimension greater than two, a reasonable alternative is presented. 
 * `layered_layout` is a Sugiyaqma style layout from the [LayeredLayouts](https://github.com/oxinabox/LayeredLayouts.jl) module. Can be slow. 
+* `force_layout` is an experimental layout method in which edges of the cover graph act like springs, all vertices repel each other, and levels are determined by `dual_ranking`. 
 
 
 ## Sample Results
@@ -48,6 +49,7 @@ Results for a randomly generated two-dimensional poset:
 
 ![](layered.png)
 
+![](force.png)
 
 
 ## Properties

@@ -5,6 +5,7 @@ using Graphs
 using SimpleDrawing
 using Plots
 using LayeredLayouts
+using Optim
 
 import Base: show
 import SimpleDrawing: draw, draw!
@@ -13,7 +14,9 @@ export HasseDiagram,
     basic_layout,
     dim2_layout,
     layered_layout,
+    layered_layout_2,
     draw,
+    force_layout,
     get_font_size,
     set_font_size!,
     get_radius,
@@ -62,5 +65,6 @@ include("scaling.jl")
 include("layout_functions/basic_layout.jl")
 include("layout_functions/dim2_layout.jl")
 include("layout_functions/layered_layout.jl")
+include("layout_functions/force_layout.jl")
 
 end # module HasseDiagrams

@@ -43,6 +43,7 @@ Multiply all coordinates in `h`'s embedding by μ.
 The resulting image won't look different. 
 """
 function scale!(h::HasseDiagram, μ::Real=1.0)
+    @warn "The scale! function is useless. Will be removed."
     scalex!(h, μ)
     scaley!(h, μ)
     return nothing

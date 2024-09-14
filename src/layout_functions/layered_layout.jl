@@ -17,3 +17,23 @@ function layered_layout(p::Poset)
     end
     return xy
 end
+
+"""
+    layered_layout_2(p::Poset)
+
+A variation on `layered_layout`.
+We compute `layered_layout` but then tweak `y`-coordinates 
+based on `dual_ranking`.
+"""
+function layered_layout_2(p::Poset)
+    xy = layered_layout(p)
+    rk = dual_ranking(p)
+
+    for v in 1:nv(p)
+        x = xy[v][1]
+        y = rk[v]
+        xy[v] = [x, y]
+    end
+
+    return xy
+end

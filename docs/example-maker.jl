@@ -1,6 +1,6 @@
 using Posets, HasseDiagrams, SimpleDrawing, Plots
 
-function draw_three(p::Poset)
+function draw_examples(p::Poset)
     h = HasseDiagram(p)
 
     set_xy!(h, basic_layout)
@@ -19,5 +19,13 @@ function draw_three(p::Poset)
     draw(h)
     expand_canvas()
     title!("set_xy!(h, layered_layout)")
-    return savefig("layered.png")
+    savefig("layered.png")
+
+    set_xy!(h, force_layout)
+    draw(h)
+    expand_canvas()
+    title!("set_xy!(h, force_layout)")
+    savefig("force.png")
+
+    return nothing
 end

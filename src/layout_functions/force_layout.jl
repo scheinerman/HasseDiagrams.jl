@@ -1,7 +1,3 @@
-using Optim, Graphs
-
-include("layered_layout_2.jl")
-include("basic_layout_2.jl")
 
 """
     _edge_energy(x1, y1, x2, y2, hook=1.0)
@@ -24,7 +20,7 @@ the stronger the repulsion.
 """
 function _repel_energy(x1, y1, x2, y2, elect=1.0)
     d2 = (x1 - x2)^2 + (y1 - y2)^2   # squared distance
-    return elect / sqrt(d2)
+    return elect / sqrt(d2 + 0.1)
 end
 
 """
@@ -35,7 +31,7 @@ end
 Total energy from edge springs and vertex-vertex repulsion.
 """
 function _total_energy(
-    g::Graph, x::Vector{T}, y::Vector{T}, hook=1.0, elect=3.0
+    g::Graph, x::Vector{T}, y::Vector{T}, hook=1.0, elect=1.0
 ) where {T<:Real}
     result = 0.0
     n = nv(g)
@@ -60,24 +56,31 @@ end
 
 Create the function to be minimized.
 """
-function _make_energy_function(p::Poset, xy::Dict, hook=1.0, elect=1.0)
+function _make_energy_function(p::Poset, xy::Dict, hook=1.0, elect=4.0)
     g = Graph(cover_digraph(p))
     n = nv(g)
     y = [xy[k][2] for k in 1:n]  # get the y-vals from current embedding
     return x -> _total_energy(g, x, y, hook, elect)
 end
 
-function optim_layout(p::Poset)
+"""
+    force_layout(p::Poset)
+
+Compute a poset in which the edges of the cover digraph act like springs and 
+the nodes act like repelling particles. The y-coordinates are determined by 
+`layered_layout_2` and then we optimize the x-coordinates. Sometimes gives good
+images, but can be sluggish. 
+"""
+function force_layout(p::Poset)
     xy = layered_layout_2(p)
     x0 = [xy[v][1] for v in 1:nv(p)]
     f = _make_energy_function(p, xy)
 
     result = optimize(f, x0)
-
-    xx = Optim.minimizer(result)
+    x_final = Optim.minimizer(result)
 
     for v in 1:nv(p)
-        x = xx[v]
+        x = x_final[v]
         y = xy[v][2]
         xy[v] = [x, y]
     end
