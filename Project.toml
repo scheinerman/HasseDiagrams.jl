@@ -1,7 +1,7 @@
 name = "HasseDiagrams"
 uuid = "eda30fb7-e799-4e1d-8790-5b2716643197"
 authors = ["Ed Scheinerman <ers@jhu.edu>"]
-version = "0.1.1"
+version = "0.1.2"
 
 [deps]
 Graphs = "86223c79-3864-5bf0-83f7-82e725a168b6"
