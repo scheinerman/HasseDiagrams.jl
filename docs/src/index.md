@@ -1,7 +1,7 @@
 # HasseDiagrams
 
 [Hasse diagrams](https://en.wikipedia.org/wiki/Hasse_diagram) are 
-drawings of [Posets](https://github.com/scheinerman/Posets.jl) (partially ordered sets).
+drawings of [posets](https://github.com/scheinerman/Posets.jl) (partially ordered sets).
 
 ## Basic Usage
 
