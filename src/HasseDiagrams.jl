@@ -3,6 +3,7 @@ module HasseDiagrams
 using Posets
 using Graphs
 using SimpleDrawing
+using SimpleDrawingObjects
 using Plots
 using LayeredLayouts
 using Optim
@@ -15,6 +16,7 @@ export HasseDiagram,
     dim2_layout,
     layered_layout,
     layered_layout_2,
+    make_objects,
     draw,
     force_layout,
     get_font_size,

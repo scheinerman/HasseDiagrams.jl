@@ -97,3 +97,16 @@ end
 Here is the result of `draw_bool(4)`:
 
 ![](bool4.png)
+
+
+## Extra Control: Drawing Objects
+
+Much greater control of the appearance of a `HasseDiagram` can be achieved using the
+`make_objects` function. The input to `make_objects` is a `HasseDiagram` and the output
+is a list of `Segment` and `Point` objects from [SimpleDrawingObjects](https://github.com/scheinerman/SimpleDrawingObjects.jl). This list begins with `Segment` objects representing the edges of the 
+`HasseDiagram` following by `Point` objects representing the vertices. This allows the user to 
+specify various attributes for the objects. For example, this would enable changing the colors of
+selected vertices (as opposed to using `set_fill_color!` which sets all vertices to the same color).
+
+Note that modifying the objects in the output of `make_objects(h)` does not modify `h` or its 
+attributes. It simply gives a list of objects that can be individually modified. 

@@ -6,10 +6,10 @@ function hasse_logo()
     h = HasseDiagram(p)
     set_xy!(h, force_layout)
     scalex!(h, 1.5)
-    set_radius!(h,32)
-    set_font_size!(h,30)
-    
+    set_radius!(h, 32)
+    set_font_size!(h, 30)
+
     draw(h)
     expand_canvas()
-    finish()
+    return finish()
 end

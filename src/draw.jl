@@ -1,20 +1,34 @@
 """
+    make_objects(h::HasseDiagram)
+
+Create a list of `SimpleDrawingObject`s representing the edges and vertices of `h`.
+The list starts with all the edges followed by all the vertices. 
+"""
+function make_objects(h::HasseDiagram)
+    p = h.p
+    n = nv(p)
+    g = cover_digraph(p)
+
+    e_list = [Segment(h.xy[src(e)]..., h.xy[dst(e)]...) for e in edges(g)]
+    v_list = [Point(h.xy[v]...) for v in 1:n]
+
+    for p in v_list
+        set_pointsize!(p, h.radius)
+        set_fillcolor!(p, h.fill_color)
+    end
+
+    return [e_list; v_list]
+end
+
+"""
     draw!(h::HasseDiagram)
 
 Draw the Hasse diagram without first erasing the canvas. 
 """
 function draw!(h::HasseDiagram)
-    p = h.p
-    g = cover_digraph(p)
+    draw(make_objects(h))
 
-    for e in edges(g)
-        u = src(e)
-        v = dst(e)
-        draw_segment(h.xy[u]..., h.xy[v]...; linecolor=:black)
-    end
-
-    for v in 1:nv(p)
-        draw_point(h.xy[v]...; marker=h.radius, linecolor=:black, color=h.fill_color)
+    for v in 1:nv(h.p)
         if h.font_size > 0
             annotate!(h.xy[v]..., h.labels[v], h.font_size)
         end
